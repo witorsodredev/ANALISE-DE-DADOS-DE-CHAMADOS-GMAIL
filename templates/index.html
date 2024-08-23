@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/index.css">
+    <title>Relatório de Emails</title>
+</head>
+<body>
+    <h1>Relatório de Emails com o Título "{{ PESQUISA }}"</h1>
+    <div class="container">
+        <div class="img">
+            <!-- Exibir o gráfico -->
+            <img src="{{ plot_url }}" alt="Gráfico de Chamados por Dia">
+            <!-- Tabela com os dados dos e-mails -->>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Assunto</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for email in emails %}
+                <tr>
+                    <td>{{ email.Subject }}</td>
+                    <td>{{ email.Date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+        
+</body>
+</html>
