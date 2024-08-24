@@ -9,28 +9,31 @@
 <body>
     <h1>Relatório de Emails com o Título "{{ PESQUISA }}"</h1>
     <div class="container">
-        <div class="img">
-            <!-- Exibir o gráfico -->
-            <img src="{{ plot_url }}" alt="Gráfico de Chamados por Dia">
-            <!-- Tabela com os dados dos e-mails -->>
+        <div class="grafico">
+            <div class="img">
+                <img src="{{ plot_url }}" alt="Gráfico de Chamados por Dia">     
+                <img src="{{ plot_plot2 }}" alt="Gráfico de Chamados por Dia">
+            </div>
         </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Data</th>
-                    <th>Assunto</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for email in emails %}
-                <tr>
-                    <td>{{ email.Subject }}</td>
-                    <td>{{ email.Date }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="tabela">
+                <table>
+                        <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Assunto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for email in emails %}
+                        <tr>
+                            <td>{{ email.Subject }}</td>
+                            <td>{{ email.Date }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+        </div>
     </div>
-        
+    
 </body>
 </html>

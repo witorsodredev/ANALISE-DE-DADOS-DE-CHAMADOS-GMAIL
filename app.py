@@ -102,6 +102,22 @@ def create_plot(daily_counts, PESQUISA):
     
     plt.savefig('static/plot.png')
     plt.close()
+
+    if daily_counts.empty:
+        print("Nenhum dado disponível para plotar.")
+        return
+    
+    plt.figure(figsize=(10, 6))
+    daily_counts.plot(kind="pie", y='Count', autopct='%1.1f%%', legend=False)
+    plt.title(f"Quantidade de Chamados por Dia ({PESQUISA})")
+    plt.ylabel("Número de Chamados")
+    plt.xticks(rotation=30)
+    
+    if not os.path.exists('static'):
+        os.makedirs('static')
+    
+    plt.savefig('static/plotpie.png')
+    plt.close()
     
 
 @app.route('/', methods=['GET', 'POST'])
@@ -117,7 +133,7 @@ def pesquisa():
         create_plot(daily_counts, PESQUISA)
 
         # Renderizar o template com o gráfico e os dados
-        return render_template('index.html', plot_url='static/plot.png', emails=email_data.to_dict(orient='records'), PESQUISA=PESQUISA)
+        return render_template('index.html', plot_url='static/plot.png', plot_plot2='static/plotpie.png', emails=email_data.to_dict(orient='records'), PESQUISA=PESQUISA)
     else:
         return render_template('form.html')
 

@@ -2,16 +2,15 @@ body{
     background-color: rgba(0, 0, 0, 0.349);
 }
 
-.container{
-    display: flex;
-    width: 100%;
-    gap: 10px;
-
-}
 table {
     width: 100%;
     border-collapse: collapse;
-    overflow: hidden;
+    overflow-y: auto;
+}
+.tabela{
+    overflow-y: auto;
+    max-height: 500px;
+    
 }
 th, td {
     border: 1px solid #ddd;
@@ -22,10 +21,16 @@ th {
 }
 img {
     max-width: 100%;
+    max-height: 400px;
     height: auto;
 }
 
 h1{
+    display: flex;
+    justify-content: center;
+}
+
+.grafico{
     display: flex;
     justify-content: center;
 }
